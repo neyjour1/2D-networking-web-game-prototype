@@ -54,6 +54,11 @@ GameServer.prototype.setUpConnections = function(){
   });
 }
 
+GameServer.prototype.validateInput = function(dt){
+  if(dt > 1/40) return false;
+  return true;
+}
+
 GameServer.prototype.gameLoop = function(){
   // get dt
   let now = Date.now();
@@ -85,6 +90,7 @@ GameServer.prototype.updateWorld = function(){
   while(message = this.serverMessages.shift()){
     let player = this.players[message.id] || undefined;
     if(!player) return;
+    if(!this.validateInput(message.delta)) return;
     player.applyInput(message); // aplicar al player el input recibido en el mensaje
     this.lastProcessedInput[message.id] = message.input_sequence_number; // actualizar last_input_number del player
   }

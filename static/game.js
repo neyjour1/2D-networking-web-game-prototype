@@ -475,10 +475,9 @@ Client.prototype.mainLoop = function(currentFrameTime){
   let delta = (currentFrameTime - lastFrameTime)/1000;
   this.lastFrameTime = currentFrameTime;
 
-  if(delta > 1/40){
-    // console.log(delta);
-    return;
-  }
+  // if(delta > 1/40){
+  //   return;
+  // }
 
   this.processServer();
   this.handleInput(delta);
