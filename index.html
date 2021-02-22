@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>lag compensation preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      * {
+        color: white;
+        box-sizing: border-box;
+      }
+      body{
+        background-color: #181a1b;
+        font-family: "Arial";
+      }
+      textarea{
+        resize: none;
+        width: 550px;
+        display: block;
+      }
+      #container{
+        width: 800px;
+        height: 640px;
+        position: relative;
+        display: block;
+        margin: 0 auto;
+      }
+      label {
+        font-size: 12px;
+      }
+      canvas {
+        margin: 0 auto;
+        display: block;
+        background: #1e1e1e;
+      }
+      #chat {
+        display: block;
+        background-color: #181a1b;
+      }
+      #containerOptions{
+        border: 3px solid gray;
+        /* background-color: red; */
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="container">
+      <canvas id="canvas"></canvas>
+      <input type="text" placeholder="Chat... (/name nombre para cambiar el nombre)" id="chat">
+      <div id="containerOptions">
+        <input type="checkbox" id="cbCSP" checked="true"><label for="cbCSP">Client side prediction</label>
+        <input type="checkbox" id="cbCSR" checked="true"><label for="cbCSR">Server reconciliation</label>
+        <input type="checkbox" id="cbGhost"><label for="cbGhost">Ghost (posicion server)</label>
+        <input type="checkbox" id="cbEI" checked="true"><label for="cbEI">Entity interpolation</label>
+        <input type="checkbox" id="cbMAP" checked="true"><label for="cbMAP">Draw map</label><br>
+        <label>Tamaño juego</label>
+        <input type="radio" id="r1" name="gamesize" value=0><label for="r1">Small</label>
+        <input type="radio" id="r2" name="gamesize" value=1 checked="checked"><label for="r2">Medium</label>
+        <input type="radio" id="r3" name="gamesize" value=2><label for="r3">Big</label>
+        <input type="radio" id="r4" name="gamesize" value=3><label for="r4">Full</label>
+
+      </div>
+    </div>
+    <!-- <textarea id="chatWindow" readonly></textarea> -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="/static/game.js"></script>
+  </body>
+</html>
